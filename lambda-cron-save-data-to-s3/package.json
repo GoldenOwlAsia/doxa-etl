@@ -1,0 +1,19 @@
+{
+  "name": "schedule-cron-save-to-s3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "schedule",
+    "s3"
+  ],
+  "author": "doxa",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.542.0",
+    "axios": "^0.19.0"
+  }
+}
