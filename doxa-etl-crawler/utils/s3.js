@@ -1,7 +1,7 @@
-import * as AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
-export const putS3 = async (params) => {
+module.exports.putS3 = async (params) => {
   try {
     await s3.putObject(params).promise();
     console.log(`Successfully put object: ${params.key}`);
