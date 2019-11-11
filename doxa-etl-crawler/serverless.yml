@@ -20,7 +20,7 @@ functions:
     timeout: 300
     handler: com01/index.handler
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(2 minutes)
     environment:
       BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
   doxa-etl-crawler-com02:
@@ -28,6 +28,6 @@ functions:
     timeout: 300
     handler: com02/index.handler
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(2 minutes)
     environment:
       BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
