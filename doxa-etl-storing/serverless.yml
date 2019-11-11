@@ -1,4 +1,4 @@
-service: save-data-from-s3-to-rds
+service: doxa-etl-storing
 
 custom:
   awsRegion: ${file(./serverless-config/env/env.${opt:stage}.yml):awsRegion}
@@ -15,8 +15,8 @@ provider:
   role: ${self:custom.role}
 
 functions:
-  save-data-from-s3-to-rds:
-    name: save-data-from-s3-to-rds-${opt:stage}
+  doxa-etl-storing:
+    name: doxa-etl-storing-${opt:stage}
     description: Schedule cron save to s3
     handler: index.handler
     events:

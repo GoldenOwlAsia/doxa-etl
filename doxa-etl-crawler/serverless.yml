@@ -1,4 +1,4 @@
-service: schedule-cron-save-to-s3
+service: doxa-etl-crawler
 
 custom:
   awsRegion: ${file(./serverless-config/env/env.${opt:stage}.yml):awsRegion}
@@ -9,17 +9,25 @@ provider:
   name: aws
   stage: ${opt:stage}
   runtime: nodejs10.x
-  timeout: 60
+  timeout: 300
   region: ${self:custom.awsRegion}
   versionFunctions: false
   role: ${self:custom.role}
 
 functions:
-  schedule-cron-save-to-s3:
-    name: schedule-cron-save-to-s3-${opt:stage}
-    description: Schedule cron save to s3
-    handler: index.handler
+  doxa-etl-crawler-com01:
+    name: doxa-etl-crawler-com01-${opt:stage}
+    timeout: 300
+    handler: com01/index.handler
     events:
-      - schedule: rate(24 hours)
+      - schedule: rate(10 minutes)
+    environment:
+      BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
+  doxa-etl-crawler-com02:
+    name: doxa-etl-crawler-com02-${opt:stage}
+    timeout: 300
+    handler: com02/index.handler
+    events:
+      - schedule: rate(10 minutes)
     environment:
       BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
