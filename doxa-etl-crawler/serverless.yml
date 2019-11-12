@@ -18,16 +18,23 @@ functions:
   doxa-etl-crawler-com01:
     name: doxa-etl-crawler-com01-${opt:stage}
     timeout: 300
-    handler: com01/index.handler
+    handler: dynamic365/index.handler
     events:
-      - schedule: rate(2 minutes)
+      - schedule: rate(24 hours)
     environment:
-      BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
+      BUCKET_NAME: doxa-etl
+      COMPANY_NAME: com1
+      API_ENDPOINT: https://jsonplaceholder.typicode.com/todos
+      API_TYPE: dynamic365
+
   doxa-etl-crawler-com02:
     name: doxa-etl-crawler-com02-${opt:stage}
     timeout: 300
-    handler: com02/index.handler
+    handler: dynamic365/index.handler
     events:
-      - schedule: rate(2 minutes)
+      - schedule: rate(24 hours)
     environment:
-      BUCKET_NAME: ${file(./serverless-config/env/env.${opt:stage}.yml):environment.BUCKET_NAME}
+      BUCKET_NAME: doxa-etl
+      COMPANY_NAME: com2
+      API_ENDPOINT: https://jsonplaceholder.typicode.com/todos
+      API_TYPE: dynamic365
